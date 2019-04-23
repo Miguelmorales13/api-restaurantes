@@ -6,7 +6,6 @@ import orderController from "./orders/order.controller";
 import menuController from "./menus/menu.controller";
 import authController from "./auth/auth.controller";
 import auth from "../middlewares/auth.middleware";
-import path from "path";
 class Routes {
     public static instance:Routes
     public router:Router
