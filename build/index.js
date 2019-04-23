@@ -43,7 +43,6 @@ var socket_io_1 = __importDefault(require("socket.io"));
 var http_1 = __importDefault(require("http"));
 var morgan_1 = __importDefault(require("morgan"));
 var cors_1 = __importDefault(require("cors"));
-var path_1 = __importDefault(require("path"));
 process.env.SECRET = process.env.SECRET || 'pepito';
 var socket_1 = __importDefault(require("./sockets/socket"));
 require("./db");
@@ -57,9 +56,6 @@ var Server = /** @class */ (function () {
         this.app.use(express_1.default.static(__dirname + '/dist/'));
         this.config();
         this.routes();
-        this.app.get(/.*/, function (req, res) {
-            res.sendfile(path_1.default.join(__dirname, 'dist/index.html'));
-        });
     }
     Server.prototype.config = function () {
         this.app.set('port', process.env.PORT || 3001);

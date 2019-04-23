@@ -6,6 +6,7 @@ import orderController from "./orders/order.controller";
 import menuController from "./menus/menu.controller";
 import authController from "./auth/auth.controller";
 import auth from "../middlewares/auth.middleware";
+import path from "path";
 class Routes {
     public static instance:Routes
     public router:Router
@@ -17,6 +18,9 @@ class Routes {
         this.orders()
         this.menus()
         this.auth()
+        this.router.get(/.*/, (req, res) => {
+            res.sendFile(path.join(__dirname, 'dist/index.html'))
+        })
     }
     static getInstance():Routes{
         if (!Routes.instance ) Routes.instance=new Routes()

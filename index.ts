@@ -22,9 +22,7 @@ class Server {
         this.app.use(express.static(__dirname+'/dist/'));
         this.config()
         this.routes()
-        this.app.get(/.*/, (req, res) => {
-            res.sendfile(path.join(__dirname, 'dist/index.html'))
-        })
+        
     }
     config():void{
         this.app.set('port', process.env.PORT || 3001 )
