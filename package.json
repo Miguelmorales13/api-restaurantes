@@ -4,9 +4,6 @@
   "description": "manejo y control de restaurantes",
   "main": "build/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
-    "serve": "tsc && nodemon build/index.js",
-    "build": "tsc -w",
     "start":"node build/index.js"
   },
   "author": "Miguel Angel Morales Reyes",
