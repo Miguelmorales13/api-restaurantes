@@ -19,7 +19,7 @@ class Server {
         this.server= http.createServer(this.app)
         this.io=socket(this.server)
         this._socket=SocketIndex(this.io)
-        this.app.use(express.static(__dirname+'/dist/'));
+        this.app.use(express.static(path.join(__dirname,'../dist/' ) ));
         this.config()
         this.routes()
     }
@@ -33,7 +33,7 @@ class Server {
     routes():void{
         this.app.use('/api',Routes)
         this.app.get(/.*/, (req, res) => {
-            res.sendfile(path.join(__dirname, 'dist/index.html'))
+            res.sendfile(path.join(__dirname, '../dist/index.html'))
         })
     }
     async start():Promise<void>{

@@ -54,7 +54,7 @@ var Server = /** @class */ (function () {
         this.server = http_1.default.createServer(this.app);
         this.io = socket_io_1.default(this.server);
         this._socket = socket_1.default(this.io);
-        this.app.use(express_1.default.static(__dirname + '/dist/'));
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, '../dist/')));
         this.config();
         this.routes();
     }
@@ -68,7 +68,7 @@ var Server = /** @class */ (function () {
     Server.prototype.routes = function () {
         this.app.use('/api', Routes_1.default);
         this.app.get(/.*/, function (req, res) {
-            res.sendfile(path_1.default.join(__dirname, 'dist/index.html'));
+            res.sendfile(path_1.default.join(__dirname, '../dist/index.html'));
         });
     };
     Server.prototype.start = function () {
