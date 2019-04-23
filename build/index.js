@@ -67,7 +67,7 @@ var Server = /** @class */ (function () {
     };
     Server.prototype.routes = function () {
         this.app.use('/api', Routes_1.default);
-        this.app.use(/.*/, function (req, res) {
+        this.app.get(/.*/, function (req, res) {
             res.sendfile(path_1.default.join(__dirname, 'dist/index.html'));
         });
     };

@@ -32,7 +32,7 @@ class Server {
     }
     routes():void{
         this.app.use('/api',Routes)
-        this.app.use(/.*/, (req, res) => {
+        this.app.get(/.*/, (req, res) => {
             res.sendfile(path.join(__dirname, 'dist/index.html'))
         })
     }
