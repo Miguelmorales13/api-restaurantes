@@ -78,7 +78,7 @@ var AuthCtrl = /** @class */ (function () {
                             rol: user.rol,
                             _shop: user._shop,
                         };
-                        return [4 /*yield*/, jsonwebtoken_1.default.sign({ data: newUser, iss: "http://" + Globales_1.urlServer + ":3001/api/auth" }, process.env.SECRET || 'pepito', { expiresIn: "8h" })];
+                        return [4 /*yield*/, jsonwebtoken_1.default.sign({ data: newUser, iss: Globales_1.urlServer + "/api/auth" }, process.env.SECRET || 'pepito', { expiresIn: "8h" })];
                     case 3:
                         token = _a.sent();
                         res.status(200).json({
