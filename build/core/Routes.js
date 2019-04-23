@@ -11,7 +11,6 @@ var order_controller_1 = __importDefault(require("./orders/order.controller"));
 var menu_controller_1 = __importDefault(require("./menus/menu.controller"));
 var auth_controller_1 = __importDefault(require("./auth/auth.controller"));
 var auth_middleware_1 = __importDefault(require("../middlewares/auth.middleware"));
-var path_1 = __importDefault(require("path"));
 var Routes = /** @class */ (function () {
     function Routes() {
         this.router = express_1.Router();
@@ -69,9 +68,6 @@ var Routes = /** @class */ (function () {
         this.router.post('/auth/', auth_controller_1.default.login);
     };
     Routes.prototype.static = function () {
-        this.router.get(/.*/, function (req, res) {
-            res.sendfile(path_1.default.join(__dirname, 'dist/index.html'));
-        });
     };
     return Routes;
 }());

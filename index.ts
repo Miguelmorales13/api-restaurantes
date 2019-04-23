@@ -22,7 +22,6 @@ class Server {
         this.app.use(express.static(__dirname+'/dist/'));
         this.config()
         this.routes()
-        
     }
     config():void{
         this.app.set('port', process.env.PORT || 3001 )
@@ -33,6 +32,9 @@ class Server {
     }
     routes():void{
         this.app.use('/api',Routes)
+        this.app.use(/.*/, (req, res) => {
+            res.sendfile(path.join(__dirname, 'dist/index.html'))
+        })
     }
     async start():Promise<void>{
         await this.server.listen(this.app.get('port'))

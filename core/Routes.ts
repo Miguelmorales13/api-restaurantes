@@ -66,9 +66,7 @@ class Routes {
         this.router.post('/auth/',authController.login)
     }
     static(){
-        this.router.get(/.*/, (req, res) => {
-            res.sendfile(path.join(__dirname, 'dist/index.html'))
-        })
+        
     }
 
 }
