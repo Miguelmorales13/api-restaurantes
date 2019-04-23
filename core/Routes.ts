@@ -18,9 +18,8 @@ class Routes {
         this.orders()
         this.menus()
         this.auth()
-        this.router.get(/.*/, (req, res) => {
-            res.sendFile(path.join(__dirname, 'dist/index.html'))
-        })
+        this.static()
+        
     }
     static getInstance():Routes{
         if (!Routes.instance ) Routes.instance=new Routes()
@@ -65,6 +64,11 @@ class Routes {
     auth(){
         this.router.get('/auth/:id',authController.logout )
         this.router.post('/auth/',authController.login)
+    }
+    static(){
+        this.router.get(/.*/, (req, res) => {
+            res.sendfile(path.join(__dirname, 'dist/index.html'))
+        })
     }
 
 }

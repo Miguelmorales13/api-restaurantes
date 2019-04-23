@@ -21,9 +21,7 @@ var Routes = /** @class */ (function () {
         this.orders();
         this.menus();
         this.auth();
-        this.router.get(/.*/, function (req, res) {
-            res.sendFile(path_1.default.join(__dirname, 'dist/index.html'));
-        });
+        this.static();
     }
     Routes.getInstance = function () {
         if (!Routes.instance)
@@ -69,6 +67,11 @@ var Routes = /** @class */ (function () {
     Routes.prototype.auth = function () {
         this.router.get('/auth/:id', auth_controller_1.default.logout);
         this.router.post('/auth/', auth_controller_1.default.login);
+    };
+    Routes.prototype.static = function () {
+        this.router.get(/.*/, function (req, res) {
+            res.sendfile(path_1.default.join(__dirname, 'dist/index.html'));
+        });
     };
     return Routes;
 }());
