@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.2ea3c926eb5dabf6ebb22700a53cc0ac.js"
+  "/precache-manifest.63d1e818c53adadbda189ba2443fd5d0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "restaurantix-vue"});
