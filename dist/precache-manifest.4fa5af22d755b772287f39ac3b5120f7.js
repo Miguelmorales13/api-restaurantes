@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/js/admin~cocinero~mesero.241c9ad5.js"
   },
   {
-    "revision": "b1eba0493f6e1f97a4c7",
-    "url": "/js/app.a98bf329.js"
+    "revision": "16f4fe175dde201b7fa6",
+    "url": "/js/app.2b4819ec.js"
   },
   {
     "revision": "d24614cf2f984dd22fb3",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/js/admin.5790f820.js"
   },
   {
-    "revision": "c0050536148ce0a57d2bf0f172d6082c",
+    "revision": "af18347540dc26a890b14551c4127766",
     "url": "/index.html"
   },
   {
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/css/chunk-vendors.ff03e902.css"
   },
   {
-    "revision": "b1eba0493f6e1f97a4c7",
+    "revision": "16f4fe175dde201b7fa6",
     "url": "/css/app.2ca135a8.css"
   },
   {
