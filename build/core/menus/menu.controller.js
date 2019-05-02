@@ -54,7 +54,7 @@ var MenuCtrl = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, menu_model_1.default.find().populate('_shop')];
+                        return [4 /*yield*/, menu_model_1.default.find().populate('_shop').populate('_categori')];
                     case 1:
                         menus = _a.sent();
                         res.json(menus);
@@ -73,7 +73,7 @@ var MenuCtrl = /** @class */ (function () {
             var menu;
             return __generator(this, function (_a) {
                 try {
-                    menu = menu_model_1.default.findById(req.params.id).populate('_shop');
+                    menu = menu_model_1.default.findById(req.params.id).populate('_shop').populate('_categori');
                     res.json(menu);
                 }
                 catch (error) {
@@ -93,7 +93,7 @@ var MenuCtrl = /** @class */ (function () {
                         return [4 /*yield*/, menu_model_1.default.create(req.body)];
                     case 1:
                         menu = _a.sent();
-                        return [4 /*yield*/, menu.populate('_shop').execPopulate()];
+                        return [4 /*yield*/, menu.populate('_shop').populate('_categori').execPopulate()];
                     case 2:
                         newMenu = _a.sent();
                         io = req.app.get('io');
@@ -119,7 +119,7 @@ var MenuCtrl = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         return [4 /*yield*/, menu_model_1.default.findByIdAndUpdate(req.params.id, {
                                 $set: req.body
-                            }, { new: true }).populate('_shop')];
+                            }, { new: true }).populate('_shop').populate('_categori')];
                     case 1:
                         menu = _a.sent();
                         io = req.app.get('io');

@@ -15,6 +15,7 @@ var Menu = /** @class */ (function () {
             price: { type: Number, required: [true, 'Requerido precio'] },
             description: { type: String, required: [true, 'Requerido descripcion'] },
             status: { type: String, default: "Activo" },
+            _categori: { type: mongoose_1.Schema.Types.ObjectId, ref: "Categori" },
             _shop: { type: mongoose_1.Schema.Types.ObjectId, ref: "Shop" },
         }, {
             timestamps: true

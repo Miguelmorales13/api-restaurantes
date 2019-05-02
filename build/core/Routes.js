@@ -9,6 +9,7 @@ var table_controller_1 = __importDefault(require("./tables/table.controller"));
 var shop_controller_1 = __importDefault(require("./shops/shop.controller"));
 var order_controller_1 = __importDefault(require("./orders/order.controller"));
 var menu_controller_1 = __importDefault(require("./menus/menu.controller"));
+var categori_controller_1 = __importDefault(require("./categories/categori.controller"));
 var auth_controller_1 = __importDefault(require("./auth/auth.controller"));
 var auth_middleware_1 = __importDefault(require("../middlewares/auth.middleware"));
 var Routes = /** @class */ (function () {
@@ -20,6 +21,7 @@ var Routes = /** @class */ (function () {
         this.orders();
         this.menus();
         this.auth();
+        this.categories();
         this.static();
     }
     Routes.getInstance = function () {
@@ -62,6 +64,13 @@ var Routes = /** @class */ (function () {
         this.router.post('/menus/', auth_middleware_1.default.auth, menu_controller_1.default.add);
         this.router.put('/menus/:id', auth_middleware_1.default.auth, menu_controller_1.default.update);
         this.router.delete('/menus/:id', auth_middleware_1.default.auth, menu_controller_1.default.delete);
+    };
+    Routes.prototype.categories = function () {
+        this.router.get('/categories/', auth_middleware_1.default.auth, categori_controller_1.default.getAll);
+        this.router.get('/categories/:id', auth_middleware_1.default.auth, categori_controller_1.default.get);
+        this.router.post('/categories/', auth_middleware_1.default.auth, categori_controller_1.default.add);
+        this.router.put('/categories/:id', auth_middleware_1.default.auth, categori_controller_1.default.update);
+        this.router.delete('/categories/:id', auth_middleware_1.default.auth, categori_controller_1.default.delete);
     };
     Routes.prototype.auth = function () {
         this.router.get('/auth/:id', auth_controller_1.default.logout);
