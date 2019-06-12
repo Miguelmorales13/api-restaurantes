@@ -6,6 +6,7 @@ import orderController from "./orders/order.controller";
 import menuController from "./menus/menu.controller";
 import categoriController from "./categories/categori.controller";
 import authController from "./auth/auth.controller";
+import imageController from "./image/image.controller";
 import auth from "../middlewares/auth.middleware";
 class Routes {
     public static instance: Routes
@@ -19,6 +20,7 @@ class Routes {
         this.menus()
         this.auth()
         this.categories()
+        this.images()
         this.static()
 
     }
@@ -32,6 +34,13 @@ class Routes {
         this.router.post('/users/', userController.add)
         this.router.put('/users/:id', auth.auth, userController.update)
         this.router.delete('/users/:id', auth.auth, userController.delete)
+    }
+    images() {
+        this.router.get('/images/', imageController.getAll)
+        this.router.get('/images/:id', imageController.get)
+        this.router.post('/images/', imageController.add)
+        this.router.put('/images/:id', auth.auth, imageController.update)
+        this.router.delete('/images/:id', auth.auth, imageController.delete)
     }
     tables() {
         this.router.get('/tables/', auth.auth, tableController.getAll)
@@ -56,8 +65,8 @@ class Routes {
         this.router.delete('/orders/:id', auth.auth, orderController.delete)
     }
     menus() {
-        this.router.get('/menus/', auth.auth, menuController.getAll)
-        this.router.get('/menus/:id', auth.auth, menuController.get)
+        this.router.get('/menus/', menuController.getAll)
+        this.router.get('/menus/:id', menuController.get)
         this.router.post('/menus/', auth.auth, menuController.add)
         this.router.put('/menus/:id', auth.auth, menuController.update)
         this.router.delete('/menus/:id', auth.auth, menuController.delete)
