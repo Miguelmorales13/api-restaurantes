@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 class DataBase {
     URL: string;
     constructor() {
-        this.URL = 'mongodb+srv://usuario:contraseña@general-9amma.mongodb.net/test?retryWrites=true'
+        this.URL = process.env.DB_URL ||'mongodb://localhost/test?retryWrites=true'
+        // this.URL = 'mongodb+srv://usuario:contraseña@general-9amma.mongodb.net/test?retryWrites=true'
         this.config()
     }
     async start() {

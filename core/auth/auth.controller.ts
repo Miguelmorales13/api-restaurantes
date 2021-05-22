@@ -27,7 +27,7 @@ class AuthCtrl {
                 rol:user.rol,
                 _shop:user._shop,
             }
-            let token = await jwt.sign({data: newUser,iss:`${urlServer}/api/auth`},process.env.SECRET || 'pepito',{ expiresIn: "8h" });
+            let token = await jwt.sign({data: newUser,iss:`${process.env.HOST}/api/auth`},process.env.SECRET || 'pepito',{ expiresIn: "8h" });
 
             res.status(200).json({
                 token:token

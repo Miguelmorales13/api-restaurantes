@@ -1,1 +1,1 @@
-export const urlServer ='https://restaurantix.herokuapp.com'
+export const urlServer =process.env.HOST

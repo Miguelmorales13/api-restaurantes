@@ -1,25 +1,33 @@
 import express, { Application } from "express";
-import socket, { Socket } from "socket.io";
+import {Server,  Socket} from "socket.io";
 import http from "http";
 import morgan from "morgan";
 import cors from "cors";
 import path from "path";
+import dotenv from "dotenv";
 import { urlServer } from './core/Globales'
 import multer from 'multer'
-import cloudinary from 'cloudinary'
+// import cloudinary from 'cloudinary'
 process.env.SECRET = process.env.SECRET || 'pepito'
 import SocketIndex from "./sockets/socket";
 import './db'
 import Routes from "./core/Routes";
-class Server {
+class App {
     public app: Application;
-    public io: any
+    public io: Server
     public server: http.Server;
     private _socket: any
     constructor() {
+        dotenv.config()
+
         this.app = express()
         this.server = http.createServer(this.app)
-        this.io = socket(this.server)
+        this.io = new Server(this.server,{
+             cors: {
+                origin: [process.env.HOST_FRONT??'http://localhost:8080'],
+                credentials: true
+              }
+        })
         this._socket = SocketIndex(this.io)
         this.app.use(express.static(path.join(__dirname, '../dist/')));
         this.config()
@@ -33,17 +41,19 @@ class Server {
         this.app.use(express.json())
         this.app.set('io', this.io)
         const storage = multer.diskStorage({
+            
             destination: path.join(__dirname, 'public/uploads'),
-            filename: (req: Request, file: any, cb: Function) => {
+            filename: (req: express.Request, file: any, cb: Function) => {
                 cb(null, new Date().getTime() + path.extname(file.originalname))
+                return
             }
         })
         this.app.use(multer({ storage }).single('image'))
-        cloudinary.config({
-            cloud_name: process.env.CLOUDINARY_NAME || 'restaurantix',
-            api_key: process.env.CLOUDINARY_KEY || '641475478966957',
-            api_secret: process.env.CLOUDINARY_SECRET || '_s4RpMISejAG6jIO8Zk2wyse3v0'
-        })
+        // cloudinary.config({
+        //     cloud_name: process.env.CLOUDINARY_NAME || 'restaurantix',
+        //     api_key: process.env.CLOUDINARY_KEY || '641475478966957',
+        //     api_secret: process.env.CLOUDINARY_SECRET || '_s4RpMISejAG6jIO8Zk2wyse3v0'
+        // })
     }
     routes(): void {
         this.app.use('/api', Routes)
@@ -56,5 +66,5 @@ class Server {
         console.log('conection succesfull ')
     }
 }
-const server = new Server()
+const server = new App()
 server.start()
